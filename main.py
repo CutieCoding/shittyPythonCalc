@@ -1,11 +1,11 @@
 userList = []
 
 def add1():
-    numToAdd = input("a number: ")
+    numToAdd = input("input a number: ")
     try: #using exception handling to my advantage, if it cant turn the input into an integer it "errors" by calling that function, else continues to add numbers
         numToAdd = int(numToAdd)
     except:
-        print(add2())
+        print("\n", add2(), "is your answer! :D\n")
     else:#if it can turn the input into an int, it reruns the function to allow more inputs
         userList.append(numToAdd)
         add1()
@@ -17,22 +17,22 @@ def add2(): #function that gets called when something other than an int is input
     return finalNum
 
 def sub1():
-    numToSub = input("a number: ")
+    numToSub = input("input a number: ")
     try: #using exception handling to my advantage, if it cant turn the input into an integer it "errors" by calling that function, else continues to add numbers
         numToSub = int(numToSub)
     except:
-        print(sub2())
+        print("\n", sub2(), "is your answer :D\n")
     else:#if it can turn the input into an int, it reruns the function to allow more inputs
         userList.append(numToSub)
         sub1()
 
 def sub2(): #function that gets called when something other than an int is inputted
     finalNum = 0 #inits variable
-    for x in range(len(userList)): #iterates over list, adding each number in the list to finalNum
+    for x in range(len(userList)): #iterates over list
         if x == 0:
-            finalNum = finalNum + userList[x]
+            finalNum = finalNum + userList[x]#adds the first number to finalnum, maths is weird
         else: 
-            finalNum = finalNum - userList[x]
+            finalNum = finalNum - userList[x]#now it starts subtracting
     return finalNum
 
 
