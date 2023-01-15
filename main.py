@@ -35,13 +35,43 @@ def sub2(): #function that gets called when something other than an int is input
             finalNum = finalNum - userList[x]#now it starts subtracting
     return finalNum
 
+def mul1():
+    numToMul = input("input a number: ")
+    try: #using exception handling to my advantage, if it cant turn the input into an integer it "errors" by calling that function, else continues to add numbers
+        numToMul = int(numToMul)
+    except:
+        print("\n", mul2(), "is your answer :D\n")
+    else:#if it can turn the input into an int, it reruns the function to allow more inputs
+        userList.append(numToMul)
+        mul1()
 
-def multip(num1, num2):
-    return num1 * num2
+def mul2(): #function that gets called when something other than an int is inputted
+    finalNum = 0 #inits variable
+    for x in range(len(userList)): #iterates over list
+        if x == 0:
+            finalNum = finalNum + userList[x]#adds the first number to finalnum, maths is weird
+        else: 
+            finalNum = finalNum * userList[x]#now it starts multiplying
+    return finalNum
 
-def division(num1, num2):
-    return num1 / num2
+def div1():
+    numToDiv = input("input a number: ")
+    try: #using exception handling to my advantage, if it cant turn the input into an integer it "errors" by calling that function, else continues to add numbers
+        numToDiv = int(numToDiv)
+    except:
+        print("\n", div2(), "is your answer :D\n")
+    else:#if it can turn the input into an int, it reruns the function to allow more inputs
+        userList.append(numToDiv)
+        div1()
 
+def div2(): #function that gets called when something other than an int is inputted
+    finalNum = 0 #inits variable
+    for x in range(len(userList)): #iterates over list
+        if x == 0:
+            finalNum = finalNum + userList[x]#adds the first number to finalnum, maths is weird
+        else: 
+            finalNum = finalNum / userList[x]#now it starts dividing
+    return finalNum
 
 def main(): #interface
     operation = input("a, s, m, d: ")
@@ -56,14 +86,14 @@ def main(): #interface
             userList.pop(0)
         main()
     elif operation == "m":
-        num1 = int(input("num1: "))
-        num2 = int(input("num2: "))
-        print(multip(num1, num2))
+        mul1()
+        for x in range(len(userList)): #VERY dirty way to clear the list because im retarded
+            userList.pop(0)
         main()
     elif operation == "d":
-        num1 = int(input("num1: "))
-        num2 = int(input("num2: "))
-        print(division(num1, num2))
+        div1()
+        for x in range(len(userList)): #VERY dirty way to clear the list because im retarded
+            userList.pop(0)
         main()
     else:
         print("invalid operation")
